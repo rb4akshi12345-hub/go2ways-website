@@ -27,7 +27,9 @@ When Emp AI launches, give it an `href` in `PRODUCTS` and re-run.
 
 The site runs on a small Node.js server (`server/`) that also receives the contact form (saved to an inbox at `/admin`, with optional email alerts) and powers the AI chat. **See [BACKEND-GUIDE.md](BACKEND-GUIDE.md)** for a plain-language guide to running it on your own server.
 
-**Free hosting:** the same site also runs for free on Cloudflare Pages, with contact messages going to a Google Sheet. **See [FREE-HOSTING-GUIDE.md](FREE-HOSTING-GUIDE.md).** Publish updates with `npm run deploy`.
+**GitHub Pages:** published automatically from this repository on every push. **See [GITHUB-PAGES-GUIDE.md](GITHUB-PAGES-GUIDE.md).**
+
+**Free hosting with AI chat:** the same site also runs for free on Cloudflare Pages, with contact messages going to a Google Sheet. **See [FREE-HOSTING-GUIDE.md](FREE-HOSTING-GUIDE.md).** Publish updates with `npm run deploy`.
 
 ## Run it
 

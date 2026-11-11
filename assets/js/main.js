@@ -434,33 +434,49 @@
       var data = Object.fromEntries(new FormData(form).entries());
       if (topic) data.topic = topic;
 
-      // Sent to the site server (server/contact.mjs), which saves it and emails the team.
+      // Where messages go: the site server (server/contact.mjs or a Cloudflare function) when
+      // there is one; on plain page hosting like GitHub Pages, straight to the Google Sheet.
       var endpoint = form.getAttribute("data-endpoint");
-      var send = endpoint
-        ? fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(data) })
-            .then(function (r) {
-              if (r.ok) return;
-              return r.json().catch(function () { return {}; }).then(function (body) {
-                // Show the server's field errors next to the right fields.
-                var errs = body.errors || {}, first = null;
-                Object.keys(errs).forEach(function (name) {
-                  var input = form.querySelector('[name="' + name + '"]');
-                  if (!input) return;
-                  var field = input.closest(".field");
-                  field.classList.add("invalid");
-                  input.setAttribute("aria-invalid", "true");
-                  var err = field.querySelector(".err");
-                  if (err) err.textContent = errs[name];
-                  if (!first) first = input;
-                });
-                if (first) first.focus();
-                var e = new Error(body.error || "status " + r.status);
-                e.userMessage = body.error;
-                e.fieldErrors = !!first;
-                throw e;
-              });
-            })
-        : new Promise(function (r) { setTimeout(r, 1100); });
+      var sheetUrl = form.getAttribute("data-sheet-url");
+      var staticHost = /\.github\.io$/.test(location.hostname) || location.protocol === "file:";
+
+      function showFieldErrors(body, status) {
+        var errs = (body && body.errors) || {}, first = null;
+        Object.keys(errs).forEach(function (name) {
+          var input = form.querySelector('[name="' + name + '"]');
+          if (!input) return;
+          var field = input.closest(".field");
+          field.classList.add("invalid");
+          input.setAttribute("aria-invalid", "true");
+          var err = field.querySelector(".err");
+          if (err) err.textContent = errs[name];
+          if (!first) first = input;
+        });
+        if (first) first.focus();
+        var e = new Error((body && body.error) || "status " + status);
+        e.userMessage = body && body.error;
+        e.fieldErrors = !!first;
+        return e;
+      }
+      function postToServer() {
+        return fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(data) })
+          .then(function (r) {
+            if (r.ok) return;
+            if (r.status === 404 || r.status === 405 || r.status === 501) { var e = new Error("no server"); e.noServer = true; throw e; }
+            return r.json().catch(function () { return {}; }).then(function (body) { throw showFieldErrors(body, r.status); });
+          }, function () { var e = new Error("no server"); e.noServer = true; throw e; });
+      }
+      function postToSheet() {
+        // text/plain keeps this a "simple" request that Google accepts from any website.
+        return fetch(sheetUrl, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ message: data }) })
+          .then(function (r) { return r.json(); })
+          .then(function (out) { if (!out || !out.ok) throw showFieldErrors(out, 0); });
+      }
+
+      var send;
+      if (staticHost && sheetUrl) send = postToSheet();
+      else if (endpoint) send = postToServer().catch(function (err) { if (err.noServer && sheetUrl) return postToSheet(); throw err; });
+      else send = new Promise(function (r) { setTimeout(r, 1100); });
 
       send.then(function () {
         var nameEl = success.querySelector("[data-name]");

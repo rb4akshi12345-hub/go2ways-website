@@ -36,6 +36,27 @@ Takes about 30 minutes the first time. Claude can run the computer steps for you
 
 ## Step 2 — Put the website on Cloudflare (10 min)
 
+There are two ways. **Through GitHub (recommended)**: every change you push goes live by itself. **From this computer**: one command, no GitHub needed.
+
+### Option A — Through GitHub (auto-publishes every update)
+
+The project folder is already a git repository with your settings file, saved messages and libraries excluded.
+
+1. Install **GitHub Desktop** from https://desktop.github.com and sign in to your GitHub account (it opens your browser; no time limit).
+2. In GitHub Desktop: **File → Add Local Repository…** → choose the `go2ways-website` folder → **Add Repository**.
+3. Click **Publish repository**. Keep **"Keep this code private"** ticked → **Publish Repository**.
+4. In Cloudflare (https://dash.cloudflare.com): **Workers & Pages → Create → Pages → Connect to Git**. Connect your GitHub account and pick the `go2ways-website` repository.
+5. Build settings:
+   - **Framework preset:** None
+   - **Build command:** `npm run build`
+   - **Build output directory:** `dist`
+6. Open **Environment variables (advanced)** and add the variables from Step 3 below now, so the first build already has them.
+7. Click **Save and Deploy**. After about a minute you get your address, like `https://go2ways-website.pages.dev`.
+
+From now on: make changes, then in GitHub Desktop write a short summary, **Commit to main**, then **Push origin**. Cloudflare publishes it automatically. (Or just ask Claude to do the commit for you.)
+
+### Option B — From this computer
+
 1. Create a free account at https://dash.cloudflare.com/sign-up.
 2. On this computer, in the `go2ways-website` folder, run:
 
@@ -60,7 +81,7 @@ The deploy sends only the public website (the pages and images) and the chat/con
    | `SHEETS_SECRET` | The same value you used for `SHARED_SECRET` in Step 1.4 |
    | `ANTHROPIC_API_KEY` | *(optional)* Your key from https://platform.claude.com/settings/keys |
 
-3. Run `npm run deploy` once more so the site picks up the settings.
+3. Publish again so the site picks up the settings: with GitHub, open **Deployments → ⋯ → Retry deployment** (or push any change); from this computer, run `npm run deploy`.
 4. Check everything is on: open `https://go2ways.pages.dev/api/health`. You want:
 
    ```
@@ -81,7 +102,7 @@ The deploy sends only the public website (the pages and images) and the chat/con
 ## Everyday use
 
 - **Reading messages:** open your Google Sheet. Newest messages are at the bottom. Reply from the email alert; replies go straight to the visitor.
-- **Updating the website:** after any change, run `npm run deploy` (or ask Claude to). The live site updates in about a minute.
+- **Updating the website:** with GitHub, commit and push in GitHub Desktop; otherwise run `npm run deploy`. Either way, Claude can do it for you. The live site updates in about a minute.
 - **Changing what the AI assistant knows:** edit `server/knowledge.md`, then deploy.
 
 ## Free limits (plenty for a company website)

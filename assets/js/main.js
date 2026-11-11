@@ -473,9 +473,26 @@
           .then(function (out) { if (!out || !out.ok) throw showFieldErrors(out, 0); });
       }
 
+      // Last resort when there's nowhere to send it: open the visitor's email app, message filled in.
+      function openEmail() {
+        var lines = ["Name: " + data.name, "Email: " + data.email];
+        if (data.company) lines.push("Company: " + data.company);
+        if (data.phone) lines.push("Phone: " + data.phone);
+        lines.push("", data.message);
+        location.href = "mailto:support@go2ways.com?subject=" + encodeURIComponent("Website enquiry from " + data.name) +
+          "&body=" + encodeURIComponent(lines.join("\n"));
+        var e = new Error("email app");
+        e.userMessage = "Opening your email app with your message. Just press Send.";
+        throw e;
+      }
+
       var send;
       if (staticHost && sheetUrl) send = postToSheet();
-      else if (endpoint) send = postToServer().catch(function (err) { if (err.noServer && sheetUrl) return postToSheet(); throw err; });
+      else if (staticHost) send = Promise.resolve().then(openEmail);
+      else if (endpoint) send = postToServer().catch(function (err) {
+        if (err.noServer) return sheetUrl ? postToSheet() : openEmail();
+        throw err;
+      });
       else send = new Promise(function (r) { setTimeout(r, 1100); });
 
       send.then(function () {

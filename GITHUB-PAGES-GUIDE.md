@@ -8,7 +8,7 @@ GitHub Pages turns this repository into a website anyone can open, at
 | Feature | On GitHub Pages |
 | --- | --- |
 | All pages, images, animations, menus | ✅ Works |
-| Contact form | ✅ Goes straight to your Google Sheet (and emails you) |
+| Contact form | ✅ Goes straight to your Google Sheet once connected (step 3). Until then it opens the visitor's email app with their message to support@go2ways.com |
 | Chat assistant | ✅ Built-in answers. ❌ No Claude AI (GitHub can't keep the API key secret; use Cloudflare for that) |
 
 ## One-time setup
@@ -22,7 +22,9 @@ GitHub Pages is free for **public** repositories. A private repository needs a p
 ### 2. Turn on Pages
 Repository → **Settings → Pages** → under **Build and deployment**, set **Source** to **GitHub Actions**.
 
-### 3. Let the Google Sheet accept messages from the website
+### 3. Let the Google Sheet accept messages from the website (optional, can be done later)
+Send Claude your Sheet's Web app link (ends in `/exec`) to connect it, then:
+
 1. Open your Google Sheet → **Extensions → Apps Script**.
 2. Replace all the code with the latest `google-sheets/Code.gs` from this project, then **Save**.
 3. **⚙ Project Settings → Script properties → Add**: `ALLOW_PUBLIC_FORM` = `true`.

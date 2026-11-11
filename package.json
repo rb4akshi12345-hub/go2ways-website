@@ -1,0 +1,16 @@
+{
+  "name": "go2ways-website",
+  "private": true,
+  "type": "module",
+  "description": "go2ways website. Free hosting: Cloudflare Pages (see FREE-HOSTING-GUIDE.md). Own server: see server/.",
+  "scripts": {
+    "build": "node cloudflare/build.mjs",
+    "deploy": "npm run build && npx wrangler@4 pages deploy dist --project-name go2ways"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.7.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

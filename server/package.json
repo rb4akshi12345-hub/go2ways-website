@@ -1,0 +1,16 @@
+{
+  "name": "go2ways-site-server",
+  "private": true,
+  "type": "module",
+  "description": "Serves the go2ways website and answers the chat widget with Claude.",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.7.0",
+    "nodemailer": "^10.5.0"
+  }
+}

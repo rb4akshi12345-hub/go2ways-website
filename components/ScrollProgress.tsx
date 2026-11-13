@@ -9,10 +9,13 @@ export default function ScrollProgress() {
 
   useEffect(() => {
     setMounted(true);
+    if (typeof document !== "undefined") {
+      document.documentElement.classList.add("is-loaded");
+    }
   }, []);
 
   useEffect(() => {
-    // Reveal elements on scroll
+    // Reveal elements on scroll / navigation
     const revealEls = document.querySelectorAll(
       ".reveal, .reveal-scale, [data-inview]"
     );
@@ -31,7 +34,7 @@ export default function ScrollProgress() {
             }
           });
         },
-        { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
+        { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
       );
       revealEls.forEach((el) => observer?.observe(el));
     } else {
@@ -58,10 +61,7 @@ export default function ScrollProgress() {
   if (!mounted) return null;
 
   return (
-    <>
-      <div className="page-veil" aria-hidden="true" />
-      <div className="scroll-progress" aria-hidden="true" />
-    </>
+    <div className="scroll-progress" aria-hidden="true" />
   );
 }
 

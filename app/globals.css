@@ -303,13 +303,13 @@ a.menu-item:hover, a.menu-item:focus-visible { background: var(--surface-subtle)
 
 /* Split-word headline reveal */
 .split-words .word { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.08em; margin-bottom: -0.08em; }
-.split-words .word > span { display: inline-block; transform: translateY(105%); opacity: 0; }
+.split-words .word > span { display: inline-block; transform: none; opacity: 1; }
 .is-loaded .split-words .word > span {
   transform: none; opacity: 1;
   transition: transform 1s var(--ease-out), opacity 0.6s ease;
   transition-delay: calc(var(--i) * 70ms + 150ms);
 }
-.hero-sub { opacity: 0; transform: translateY(16px); }
+.hero-sub { opacity: 1; transform: none; }
 .is-loaded .hero-sub { opacity: 1; transform: none; transition: opacity 0.9s ease 0.65s, transform 0.9s var(--ease-out) 0.65s; }
 
 /* ---------- Glass feature panel ---------- */
@@ -852,7 +852,7 @@ a.menu-item:hover, a.menu-item:focus-visible { background: var(--surface-subtle)
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
 /* Page transition veil */
-.page-veil { position: fixed; inset: 0; z-index: 100; background: #fff; pointer-events: none; opacity: 1; transition: opacity 0.4s ease; }
+.page-veil { display: none !important; }
 .is-loaded .page-veil { opacity: 0; }
 .is-leaving .page-veil { opacity: 1; transition-duration: 0.3s; }
 

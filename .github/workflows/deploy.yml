@@ -25,32 +25,30 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
-
-      - name: Build static service pages and navigation
-        run: python _build/build_pages.py
-
-      - name: Build production distribution
-        run: node cloudflare/build.mjs
-
-      - name: Ensure Jekyll processing is disabled
-        run: touch dist/.nojekyll
+          node-version: 20
+          cache: npm
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
+        with:
+          static_site_generator: next
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Next.js static export
+        run: npm run build
+
+      - name: Ensure Jekyll processing is disabled
+        run: touch out/.nojekyll
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: out
 
   deploy:
     name: Deploy to GitHub Pages
@@ -63,4 +61,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-

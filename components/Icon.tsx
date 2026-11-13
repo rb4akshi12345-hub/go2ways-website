@@ -24,3 +24,4 @@ export default function Icon({ name, className = "ico" }: IconProps) {
     />
   );
 }
+

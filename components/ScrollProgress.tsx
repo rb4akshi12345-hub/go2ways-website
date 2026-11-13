@@ -1,10 +1,15 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 export default function ScrollProgress() {
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     // Reveal elements on scroll
@@ -50,6 +55,8 @@ export default function ScrollProgress() {
     };
   }, [pathname]);
 
+  if (!mounted) return null;
+
   return (
     <>
       <div className="page-veil" aria-hidden="true" />
@@ -57,3 +64,4 @@ export default function ScrollProgress() {
     </>
   );
 }
+

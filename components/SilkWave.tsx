@@ -129,7 +129,6 @@ export default function SilkWave({
       animId = requestAnimationFrame(loop);
     }
 
-    // Parallax scroll listener
     let scrollHandler: (() => void) | null = null;
     if (parallax) {
       scrollHandler = () => {
@@ -146,5 +145,12 @@ export default function SilkWave({
     };
   }, [wave, speed, parallax]);
 
-  return <div ref={containerRef} className={className} aria-hidden="true" />;
+  return (
+    <div
+      ref={containerRef}
+      className={className}
+      aria-hidden="true"
+      suppressHydrationWarning
+    />
+  );
 }

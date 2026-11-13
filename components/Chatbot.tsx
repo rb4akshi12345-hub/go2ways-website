@@ -13,6 +13,7 @@ interface Message {
 }
 
 export default function Chatbot() {
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -25,6 +26,10 @@ export default function Chatbot() {
   const [isTyping, setIsTyping] = useState(false);
   const [teaserVisible, setTeaserVisible] = useState(false);
   const logRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Auto-scroll on new message
   useEffect(() => {
@@ -189,6 +194,8 @@ We respond within 24 hours on business days.`,
       "How do I contact you?",
     ]);
   };
+
+  if (!mounted) return null;
 
   return (
     <div className={`g2w-chat ${isOpen ? "is-open is-visible" : ""}`}>
@@ -404,3 +411,4 @@ We respond within 24 hours on business days.`,
     </div>
   );
 }
+

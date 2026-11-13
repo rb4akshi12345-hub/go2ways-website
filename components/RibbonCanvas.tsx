@@ -115,5 +115,12 @@ export default function RibbonCanvas({
     };
   }, [faint]);
 
-  return <div ref={containerRef} className={className} aria-hidden="true" />;
+  return (
+    <div
+      ref={containerRef}
+      className={className}
+      aria-hidden="true"
+      suppressHydrationWarning
+    />
+  );
 }

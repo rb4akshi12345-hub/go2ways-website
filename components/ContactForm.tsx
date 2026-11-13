@@ -95,22 +95,61 @@ export default function ContactForm() {
 
     setLoading(true);
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, topic }),
-      });
+      const accessKey =
+        process.env.NEXT_PUBLIC_WEB3FORMS_KEY ||
+        ""; // Provide access key via NEXT_PUBLIC_WEB3FORMS_KEY in .env.local
 
-      const data = await res.json().catch(() => ({}));
-      if (res.ok) {
-        setSubmitted(true);
-      } else {
-        if (data.errors) {
-          setErrors(data.errors);
+      if (accessKey) {
+        // Direct static dispatch via Web3Forms (ideal for GitHub Pages)
+        const res = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            access_key: accessKey,
+            from_name: "go2ways Website Lead",
+            subject: `New Lead: ${formData.name}${formData.company ? ` (${formData.company})` : ""}`,
+            name: formData.name,
+            email: formData.email,
+            company: formData.company || "Not specified",
+            phone: formData.phone || "Not specified",
+            topic: topic || "General Inquiry",
+            message: formData.message,
+            botcheck: formData.website, // Honeypot spam trap
+          }),
+        });
+
+        const data = await res.json().catch(() => ({}));
+        if (data.success || res.ok) {
+          setSubmitted(true);
         } else {
           setServerError(
-            data.error || "Could not send message. Please email support@go2ways.com."
+            data.message ||
+              "Could not send message. Please email support@go2ways.com."
           );
+        }
+      } else {
+        // Fallback to internal API route if running on Node/Vercel
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...formData, topic }),
+        });
+
+        const data = await res.json().catch(() => ({}));
+        if (res.ok) {
+          setSubmitted(true);
+        } else {
+          if (data.errors) {
+            setErrors(data.errors);
+          } else {
+            setServerError(
+              data.error ||
+                "Could not send message. Please email support@go2ways.com."
+            );
+          }
         }
       }
     } catch {

@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import type { Metadata } from "next";
 import SilkWave from "@/components/SilkWave";
+import { assetPath } from "@/lib/assetPath";
 
 export const metadata: Metadata = {
   title: "Services — go2ways",
@@ -44,7 +45,7 @@ export default function ServicesPage() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   className="crop-ops"
-                  src="/assets/img/svc-operations.png"
+                  src={assetPath("/assets/img/svc-operations.png")}
                   alt="Isometric city map with buses, depots and a field engineer, showing how assets and people connect"
                   loading="lazy"
                 />
@@ -69,12 +70,12 @@ export default function ServicesPage() {
             <div className="media">
               <div
                 className="media-inner"
-                style={{ background: "url(/assets/img/svc-workflow-bg.png) center/cover" }}
+                style={{ background: `url(${assetPath("/assets/img/svc-workflow-bg.png")}) center/cover` }}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   className="crop-together"
-                  src="/assets/img/svc-info-together.png"
+                  src={assetPath("/assets/img/svc-info-together.png")}
                   alt="go2ways hub linking fleet, field teams, cloud data, facilities and documents"
                   loading="lazy"
                 />
@@ -104,7 +105,7 @@ export default function ServicesPage() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   className="crop-action"
-                  src="/assets/img/svc-data-action.png"
+                  src={assetPath("/assets/img/svc-data-action.png")}
                   alt="Dashboard that identifies patterns, prioritises work and improves performance"
                   loading="lazy"
                 />
@@ -131,7 +132,7 @@ export default function ServicesPage() {
         <h2 className="why-logo reveal" aria-label="Why go2ways?">
           <span>Why</span>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/assets/img/footer-logo.png" alt="go2ways" width={144} height={30} />
+          <img src={assetPath("/assets/img/footer-logo.png")} alt="go2ways" width={144} height={30} />
           <span className="qmark" aria-hidden="true">
             ?
           </span>
@@ -309,7 +310,7 @@ export default function ServicesPage() {
           <h2 className="why-logo small reveal" aria-label="The go2ways solution">
             <span>The</span>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/assets/img/footer-logo.png" alt="go2ways" width={144} height={30} />
+            <img src={assetPath("/assets/img/footer-logo.png")} alt="go2ways" width={144} height={30} />
             <span>solution</span>
           </h2>
           <p className="heading-l reveal" style={{ "--stagger": 1 } as any}>
@@ -395,7 +396,7 @@ export default function ServicesPage() {
                   <i />
                 </span>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/assets/img/logo.png" alt="" width={90} height={25} />
+                <img src={assetPath("/assets/img/logo.png")} alt="" width={90} height={25} />
                 <span className="live">
                   <span className="pulse" />
                   Live overview

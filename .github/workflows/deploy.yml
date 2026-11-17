@@ -41,6 +41,8 @@ jobs:
 
       - name: Build Next.js static export
         run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /go2ways-website
 
       - name: Ensure Jekyll processing is disabled
         run: touch out/.nojekyll

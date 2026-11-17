@@ -1,7 +1,6 @@
 import React, { Suspense } from "react";
 import Link from "next/link";
 import type { Metadata } from "next";
-import RibbonCanvas from "@/components/RibbonCanvas";
 import SilkWave from "@/components/SilkWave";
 import ContactForm from "@/components/ContactForm";
 import FaqAccordion from "@/components/FaqAccordion";
@@ -16,7 +15,7 @@ export default function ContactPage() {
   return (
     <main>
       <section className="hero contact-hero">
-        <RibbonCanvas />
+        <SilkWave wave="hero" parallax className="silk-wave hero-silk-wave" />
         <div className="hero-copy">
           <h1 className="display-xl split-words">Get in Touch</h1>
           <p className="body-l hero-sub">
@@ -205,7 +204,7 @@ export default function ContactPage() {
             <Link className="btn btn-primary" href="/services">
               Explore Our Services
             </Link>
-            <Link className="btn btn-secondary" href="/company">
+            <Link className="btn btn-secondary" href="/#about">
               About go2ways
             </Link>
           </div>

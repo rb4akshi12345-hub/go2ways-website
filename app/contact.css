@@ -12,6 +12,36 @@
   transform: none !important;
 }
 
+/* --- Contact Hero (Matching Homepage & Industries Background) --- */
+.contact-hero {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 18%, rgba(230, 240, 252, 0.75) 0%, rgba(247, 248, 250, 0.4) 60%, #ffffff 100%);
+  padding-top: 170px;
+  padding-bottom: 40px;
+}
+
+.contact-hero .hero-silk-wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 160px;
+  height: clamp(380px, 46vw, 680px);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.contact-hero .hero-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.contact-hero .info-cards {
+  position: relative;
+  z-index: 2;
+}
+
 /* Two-Column Grid Alignment */
 .contact-grid {
   display: grid;

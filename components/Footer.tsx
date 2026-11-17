@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { SERVICES } from "@/data/services";
+import { assetPath } from "@/lib/assetPath";
 
 export default function Footer() {
   const featuredServices = SERVICES.filter((s) =>
@@ -16,7 +17,7 @@ export default function Footer() {
           <Link href="/" aria-label="go2ways home">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/assets/img/footer-logo.png"
+              src={assetPath("/assets/img/footer-logo.png")}
               alt="go2ways"
               width={144}
               height={30}
@@ -90,7 +91,7 @@ export default function Footer() {
             <h4>Company</h4>
             <ul>
               <li>
-                <Link href="/company">About</Link>
+                <Link href="/#about">About</Link>
               </li>
               <li>
                 <span style={{ cursor: "pointer", color: "inherit" }}>Careers</span>

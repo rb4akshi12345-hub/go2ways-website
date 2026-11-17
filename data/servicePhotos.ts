@@ -92,6 +92,8 @@ export const SERVICE_PHOTO_ALTS: Record<string, Record<string, string>> = {
   }
 };
 
+import { assetPath } from "@/lib/assetPath";
+
 export function servicePhoto(slug: string, slot: string) {
-  return { src: `/assets/img/services/${slug}/${slot}.jpg`, alt: SERVICE_PHOTO_ALTS[slug]?.[slot] ?? "" };
+  return { src: assetPath(`/assets/img/services/${slug}/${slot}.jpg`), alt: SERVICE_PHOTO_ALTS[slug]?.[slot] ?? "" };
 }

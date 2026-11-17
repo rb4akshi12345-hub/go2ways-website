@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { assetPath } from "@/lib/assetPath";
 
 interface Sector {
   name: string;
@@ -95,7 +96,7 @@ export default function IndustriesSection() {
               <div className="industry-image-wrap">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={sector.img}
+                  src={assetPath(sector.img)}
                   alt={sector.alt}
                   width={640}
                   height={480}

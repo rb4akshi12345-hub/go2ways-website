@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import type { Metadata } from "next";
-import RibbonCanvas from "@/components/RibbonCanvas";
 import SilkWave from "@/components/SilkWave";
 import IndustryClientShowcase from "@/components/industries/IndustryClientShowcase";
+import { assetPath } from "@/lib/assetPath";
 
 export const metadata: Metadata = {
   title: "Industries — go2ways",
@@ -65,7 +65,7 @@ export default function IndustriesPage() {
   return (
     <main>
       <section className="hero industries-hero">
-        <RibbonCanvas />
+        <SilkWave wave="hero" parallax className="silk-wave hero-silk-wave" />
         <div className="hero-copy">
           <h1 className="display-xl split-words">
             Transforming Physical Assets
@@ -100,7 +100,7 @@ export default function IndustriesPage() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     className="photo-fill"
-                    src={sec.img}
+                    src={assetPath(sec.img)}
                     alt={sec.alt}
                     width={880}
                     height={1010}

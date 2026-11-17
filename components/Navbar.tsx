@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SERVICES, PRODUCTS } from "@/data/services";
 import Icon from "./Icon";
+import { assetPath } from "@/lib/assetPath";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -58,7 +59,6 @@ export default function Navbar() {
 
   const isServicesActive = pathname.startsWith("/services");
   const isIndustriesActive = pathname === "/industries";
-  const isCompanyActive = pathname === "/company";
   const isHomeActive = pathname === "/";
 
   return (
@@ -70,7 +70,7 @@ export default function Navbar() {
       <div className="bar">
         <Link className="brand" href="/" aria-label="go2ways home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/assets/img/logo.png" alt="go2ways" width={125} height={35} />
+          <img src={assetPath("/assets/img/logo.png")} alt="go2ways" width={125} height={35} />
         </Link>
 
         <nav className="main-nav" aria-label="Main">
@@ -86,14 +86,6 @@ export default function Navbar() {
                 aria-current={isIndustriesActive ? "page" : undefined}
               >
                 Industries
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/company"
-                aria-current={isCompanyActive ? "page" : undefined}
-              >
-                Company
               </Link>
             </li>
             <li>

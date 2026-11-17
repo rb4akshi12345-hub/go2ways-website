@@ -6,6 +6,7 @@ import CoreCapabilities from "@/components/home/CoreCapabilities";
 import IndustriesSection from "@/components/home/IndustriesSection";
 import WhySection from "@/components/home/WhySection";
 import ApproachSection from "@/components/home/ApproachSection";
+import AboutSection from "@/components/home/AboutSection";
 import OrdovaSection from "@/components/home/OrdovaSection";
 import HomeCta from "@/components/home/HomeCta";
 
@@ -24,6 +25,7 @@ export default function HomePage() {
       <IndustriesSection />
       <WhySection />
       <ApproachSection />
+      <AboutSection />
       <OrdovaSection />
       <HomeCta />
     </main>

@@ -65,10 +65,12 @@ export default function ApproachSection() {
         <div className="approach-timeline">
           <div className="timeline-connecting-line" aria-hidden="true" />
           <div className="approach-grid">
-            {STEPS.map((step) => (
+            {STEPS.map((step, index) => (
               <div
                 key={step.step}
                 className="approach-step-card"
+                data-reveal
+                style={{ "--reveal-delay": `${index * 80}ms` } as React.CSSProperties}
               >
                 <div className="step-header">
                   <div className="step-number-bubble">

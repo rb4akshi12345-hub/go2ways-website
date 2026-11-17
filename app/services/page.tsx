@@ -267,11 +267,7 @@ export default function ServicesPage() {
               !
             </span>
             <div>
-              <h3>
-                Teams spend time
-                <br />
-                searching for context
-              </h3>
+              <h3>Teams spend time searching for context</h3>
               <p>Information is spread across sources.</p>
             </div>
           </article>
@@ -280,11 +276,7 @@ export default function ServicesPage() {
               !
             </span>
             <div>
-              <h3>
-                Conflicting information
-                <br />
-                has to be reconciled
-              </h3>
+              <h3>Conflicting information has to be reconciled</h3>
               <p>Teams must piece together what is true.</p>
             </div>
           </article>
@@ -293,11 +285,7 @@ export default function ServicesPage() {
               !
             </span>
             <div>
-              <h3>
-                Coordinating the next step
-                <br />
-                creates delays
-              </h3>
+              <h3>Coordinating the next step creates delays</h3>
               <p>Action waits on calls and handovers.</p>
             </div>
           </article>

@@ -9,6 +9,8 @@ import {
 } from "@/data/services";
 import Icon from "@/components/Icon";
 import SilkWave from "@/components/SilkWave";
+import PhotoSlider from "@/components/PhotoSlider";
+import { servicePhoto } from "@/data/servicePhotos";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -84,29 +86,30 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             </ul>
           </div>
 
-          <aside className="glance-card reveal-scale" aria-label="At a glance">
-            <span className="glance-icon">
-              <Icon name={s.icon} />
-            </span>
-            <div>
-              <h3 className="glance-label">Works with</h3>
-              <ul className="chip-list">
-                {s.works.map((w, i) => (
-                  <li key={i} className="chip">
-                    {w}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="glance-label">Typical engagements</h3>
-              <ul className="engage-list">
-                {s.engage.map((e, i) => (
-                  <li key={i}>{e}</li>
-                ))}
-              </ul>
-            </div>
-          </aside>
+          <PhotoSlider
+            label={`${s.name} in practice`}
+            photos={["g1", "g2", "g3"].map((slot) => servicePhoto(s.slug, slot))}
+          />
+        </div>
+        <div className="svc-details reveal">
+          <div>
+            <h3 className="details-label">Works with</h3>
+            <ul className="chip-list">
+              {s.works.map((w, i) => (
+                <li key={i} className="chip">
+                  {w}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="details-label">Typical engagements</h3>
+            <ul className="engage-list">
+              {s.engage.map((e, i) => (
+                <li key={i}>{e}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
@@ -120,15 +123,21 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           </h2>
         </div>
         <div className="card-grid" data-stagger-children>
-          {s.caps.map(([ic, t, d], i) => (
-            <article key={i} className="step-card cap-card reveal">
-              <span className="cap-icon">
-                <Icon name={ic} />
-              </span>
-              <h3 className="heading-s">{t}</h3>
-              <p className="body-m">{d}</p>
-            </article>
-          ))}
+          {s.caps.map(([, t, d], i) => {
+            const photo = servicePhoto(s.slug, `c${i + 1}`);
+            return (
+              <article key={i} className="cap-card reveal">
+                <div className="cap-photo">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={photo.src} alt={photo.alt} width={800} height={520} loading="lazy" />
+                </div>
+                <div className="cap-text">
+                  <h3 className="heading-s">{t}</h3>
+                  <p className="body-m">{d}</p>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
 

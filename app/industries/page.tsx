@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import RibbonCanvas from "@/components/RibbonCanvas";
 import SilkWave from "@/components/SilkWave";
+import IndustryClientShowcase from "@/components/industries/IndustryClientShowcase";
 
 export const metadata: Metadata = {
   title: "Industries — go2ways",
@@ -78,122 +79,7 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      <section className="section container" id="clients">
-        <div className="client-header">
-          <div className="client-header-title">
-            <h2 className="heading-l reveal">Services Provided To</h2>
-            <p className="body-l text-slate reveal" style={{ "--stagger": 1 } as any}>
-              Trusted by enterprise leaders worldwide.
-            </p>
-          </div>
-          <div className="client-header-badge reveal" style={{ "--stagger": 2 } as any}>
-            <span className="dot" aria-hidden="true" />
-            Active engagements across 12 countries
-          </div>
-        </div>
-
-        <ul className="logo-grid logo-row-1" data-stagger-children>
-          <li className="logo-tile reveal-scale">
-            <span
-              className="wm"
-              style={{
-                fontSize: "30px",
-                fontWeight: 800,
-                color: "#0a2540",
-                letterSpacing: "-0.04em",
-              }}
-            >
-              LTI
-            </span>
-          </li>
-          <li className="logo-tile reveal-scale">
-            <span
-              className="wm"
-              style={{
-                fontSize: "24px",
-                fontWeight: 700,
-                color: "#1f66cc",
-                letterSpacing: "0.08em",
-              }}
-            >
-              BRIWO
-            </span>
-          </li>
-          <li className="logo-tile reveal-scale">
-            <span className="wm" style={{ fontSize: "22px", color: "#1a3a8a" }}>
-              IBM Maximo
-            </span>
-          </li>
-          <li className="logo-tile reveal-scale">
-            <span
-              className="wm"
-              style={{
-                fontSize: "22px",
-                background: "#1d3a9e",
-                color: "#fff",
-                padding: "6px 10px",
-                fontWeight: 600,
-              }}
-            >
-              Asahi<b>KASEI</b>
-            </span>
-          </li>
-        </ul>
-
-        <ul className="logo-grid logo-row-2" data-stagger-children>
-          <li className="logo-tile reveal-scale">
-            <span
-              className="wm"
-              style={{ fontSize: "12px", color: "#1a3f80", fontWeight: 700 }}
-            >
-              Saudi Electricity Company
-            </span>
-          </li>
-          <li className="logo-tile reveal-scale">
-            <span
-              className="wm"
-              style={{
-                fontSize: "20px",
-                letterSpacing: "0.35em",
-                color: "#222",
-                fontWeight: 500,
-              }}
-            >
-              CONNIXT
-            </span>
-          </li>
-          <li className="logo-tile reveal-scale">
-            <span className="wm" style={{ fontSize: "14px", color: "#111" }}>
-              <span style={{ color: "#e60012" }}>◆</span> MITSUBISHI
-              <small style={{ display: "block", fontSize: "7px" }}>
-                HEAVY INDUSTRIES, LTD.
-              </small>
-            </span>
-          </li>
-          <li className="logo-tile reveal-scale">
-            <span
-              className="wm"
-              style={{ fontSize: "15px", color: "#8a8a8a", fontWeight: 600 }}
-            >
-              <span
-                style={{
-                  color: "#5cb848",
-                  fontSize: "30px",
-                  verticalAlign: "middle",
-                }}
-              >
-                Q
-              </span>{" "}
-              QUANTUM STRIDES LLC
-            </span>
-          </li>
-          <li className="logo-tile reveal-scale">
-            <span className="wm" style={{ fontSize: "28px", color: "#555" }}>
-              &amp; more....
-            </span>
-          </li>
-        </ul>
-      </section>
+      <IndustryClientShowcase />
 
       <section className="section container" id="sectors">
         <h2
@@ -244,11 +130,11 @@ export default function IndustriesPage() {
             migrations, and TRIRIGA.
           </p>
           <div className="cta-actions">
-            <Link className="btn btn-primary" href="/contact?topic=trial">
-              Start free trial
+            <Link className="btn btn-primary" href="/contact?topic=consultation">
+              Schedule a Consultation
             </Link>
-            <Link className="btn btn-secondary" href="/contact?topic=demo">
-              Book a demo
+            <Link className="btn btn-secondary" href="/contact?topic=expert">
+              Speak With An Expert
             </Link>
           </div>
         </div>

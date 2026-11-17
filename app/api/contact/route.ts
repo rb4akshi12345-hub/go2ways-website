@@ -44,14 +44,15 @@ export async function POST(req: Request) {
     const notifyTo = env.NOTIFY_TO || smtpUser || "servicego2ways@gmail.com";
 
     if (smtpHost && notifyTo) {
-      const transporter = nodemailer.createTransport({
-        host: smtpHost,
-        port: Number(env.SMTP_PORT) || 587,
-        secure: Number(env.SMTP_PORT) === 465,
-        auth: smtpUser ? { user: smtpUser, pass: smtpPass } : undefined,
-      });
+      try {
+        const transporter = nodemailer.createTransport({
+          host: smtpHost,
+          port: Number(env.SMTP_PORT) || 587,
+          secure: Number(env.SMTP_PORT) === 465,
+          auth: smtpUser ? { user: smtpUser, pass: smtpPass } : undefined,
+        });
 
-      const htmlContent = `
+        const htmlContent = `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff;">
           <div style="border-bottom: 2px solid #6c3cc9; padding-bottom: 16px; margin-bottom: 20px;">
             <h2 style="margin: 0; color: #1e293b; font-size: 20px;">New Website Lead</h2>
@@ -94,27 +95,30 @@ export async function POST(req: Request) {
         </div>
       `;
 
-      await transporter.sendMail({
-        from: env.NOTIFY_FROM || env.SMTP_USER || "no-reply@go2ways.com",
-        to: env.NOTIFY_TO,
-        replyTo: `${name} <${email}>`,
-        subject: `New Lead: ${name}${company ? ` (${company})` : ""}`,
-        text: [
-          `Name: ${name}`,
-          `Email: ${email}`,
-          `Company: ${company || "-"}`,
-          `Phone: ${phone || "-"}`,
-          topic ? `Topic: ${topic}` : null,
-          "",
-          "Message:",
-          message,
-          "",
-          `Received at ${new Date().toISOString()}`,
-        ]
-          .filter(Boolean)
-          .join("\n"),
-        html: htmlContent,
-      });
+        await transporter.sendMail({
+          from: env.NOTIFY_FROM || env.SMTP_USER || "no-reply@go2ways.com",
+          to: env.NOTIFY_TO,
+          replyTo: `${name} <${email}>`,
+          subject: `New Lead: ${name}${company ? ` (${company})` : ""}`,
+          text: [
+            `Name: ${name}`,
+            `Email: ${email}`,
+            `Company: ${company || "-"}`,
+            `Phone: ${phone || "-"}`,
+            topic ? `Topic: ${topic}` : null,
+            "",
+            "Message:",
+            message,
+            "",
+            `Received at ${new Date().toISOString()}`,
+          ]
+            .filter(Boolean)
+            .join("\n"),
+          html: htmlContent,
+        });
+      } catch (mailErr) {
+        console.warn("[contact mail dispatch warning]:", mailErr);
+      }
     }
 
     return NextResponse.json({ ok: true });

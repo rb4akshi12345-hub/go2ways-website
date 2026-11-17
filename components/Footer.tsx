@@ -22,7 +22,14 @@ export default function Footer() {
               height={30}
             />
           </Link>
-          <p>Intelligent AI assistants for modern businesses.</p>
+          <p>Enterprise technology partner for asset-driven operations.</p>
+          <div style={{ fontSize: "13px", color: "var(--text-muted)", marginTop: "4px", lineHeight: 1.5 }}>
+            <span>Gurugram, Haryana, India</span>
+            <br />
+            <a href="mailto:support@go2ways.com" style={{ color: "var(--text-secondary)" }}>
+              support@go2ways.com
+            </a>
+          </div>
         </div>
 
         <div className="footer-cols">
@@ -83,7 +90,7 @@ export default function Footer() {
             <h4>Company</h4>
             <ul>
               <li>
-                <Link href="/industries">About</Link>
+                <Link href="/company">About</Link>
               </li>
               <li>
                 <span style={{ cursor: "pointer", color: "inherit" }}>Careers</span>

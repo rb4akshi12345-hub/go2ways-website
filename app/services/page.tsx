@@ -128,8 +128,8 @@ export default function ServicesPage() {
       </section>
 
       <section className="section container" id="why">
-        <h2 className="why-logo reveal">
-          Why{" "}
+        <h2 className="why-logo reveal" aria-label="Why go2ways?">
+          <span>Why</span>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/assets/img/footer-logo.png" alt="go2ways" width={144} height={30} />
           <span className="qmark" aria-hidden="true">
@@ -290,15 +290,27 @@ export default function ServicesPage() {
             </div>
           </article>
         </div>
+
+        <svg
+          className="converge in-view"
+          viewBox="0 0 1240 110"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+          data-inview
+        >
+          <path d="M206 0 C206 60, 620 60, 620 110" />
+          <path d="M620 0 L620 110" />
+          <path d="M1034 0 C1034 60, 620 60, 620 110" />
+        </svg>
       </section>
 
       <section className="section container" id="solution">
         <div className="section-header">
-          <h2 className="why-logo small reveal">
-            The{" "}
+          <h2 className="why-logo small reveal" aria-label="The go2ways solution">
+            <span>The</span>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/assets/img/footer-logo.png" alt="go2ways" width={144} height={30} />{" "}
-            solution
+            <img src="/assets/img/footer-logo.png" alt="go2ways" width={144} height={30} />
+            <span>solution</span>
           </h2>
           <p className="heading-l reveal" style={{ "--stagger": 1 } as any}>
             One connected view
@@ -316,26 +328,65 @@ export default function ServicesPage() {
             <p className="card-label">Connected inputs</p>
             <ul className="in-list">
               <li className="in-pill reveal" style={{ "--stagger": 0 } as any}>
-                Teams
+                <span className="in-ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="9" cy="8" r="3.5" />
+                    <path d="M2.5 20a6.5 6.5 0 0 1 13 0" />
+                    <path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6" />
+                  </svg>
+                </span>
+                <span>Teams</span>
               </li>
               <li className="in-pill reveal" style={{ "--stagger": 1 } as any}>
-                Fleet
+                <span className="in-ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="4" y="3" width="16" height="15" rx="2" />
+                    <path d="M4 11h16M8 18v3M16 18v3M8 14.5h.01M16 14.5h.01" />
+                  </svg>
+                </span>
+                <span>Fleet</span>
               </li>
               <li className="in-pill reveal" style={{ "--stagger": 2 } as any}>
-                Data
+                <span className="in-ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                    <ellipse cx="12" cy="5" rx="8" ry="3" />
+                    <path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5" />
+                    <path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3" />
+                  </svg>
+                </span>
+                <span>Data</span>
               </li>
               <li className="in-pill reveal" style={{ "--stagger": 3 } as any}>
-                Records
+                <span className="in-ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <path d="M14 2v6h6M8 13h8M8 17h5" />
+                  </svg>
+                </span>
+                <span>Records</span>
               </li>
             </ul>
           </div>
+
+          <svg
+            className="in-lines in-view"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+            data-inview
+          >
+            <path d="M0 14 C55 14, 45 50, 100 50" />
+            <path d="M0 38 C55 38, 45 50, 100 50" />
+            <path d="M0 62 C55 62, 45 50, 100 50" />
+            <path d="M0 86 C55 86, 45 50, 100 50" />
+          </svg>
 
           <div className="org-dash">
             <p className="card-label">All organised in go2ways</p>
             <div
               className="dash reveal-scale in-view"
               role="img"
-              aria-label="Operations overview"
+              aria-label="Example go2ways operations overview showing active assets, on-time status, items needing attention, network activity and live alerts"
             >
               <div className="dash-top" aria-hidden="true">
                 <span className="dots">
@@ -367,6 +418,33 @@ export default function ServicesPage() {
                     <b>
                       03 <em>items</em>
                     </b>
+                  </div>
+                </div>
+
+                <div className="dash-bottom">
+                  <div className="dash-chart">
+                    <small>Network activity</small>
+                    <svg viewBox="0 0 300 70" preserveAspectRatio="none">
+                      <path
+                        className="l1"
+                        d="M0 52 C30 48, 45 30, 75 34 S120 50, 150 36 S200 12, 230 20 S275 30, 300 14"
+                      />
+                      <path
+                        className="l2"
+                        d="M0 62 C35 60, 55 50, 85 54 S135 62, 165 50 S215 38, 245 44 S280 40, 300 34"
+                      />
+                    </svg>
+                  </div>
+                  <div className="dash-alerts">
+                    <small>Live attention</small>
+                    <p className="alert-row amber">
+                      <i aria-hidden="true" />
+                      Vehicle service due
+                    </p>
+                    <p className="alert-row blue">
+                      <i aria-hidden="true" />
+                      Route update received
+                    </p>
                   </div>
                 </div>
               </div>
@@ -426,11 +504,11 @@ export default function ServicesPage() {
             migrations, and TRIRIGA.
           </p>
           <div className="cta-actions">
-            <Link className="btn btn-primary" href="/contact?topic=trial">
-              Start free trial
+            <Link className="btn btn-primary" href="/contact">
+              Schedule a Consultation
             </Link>
             <Link className="btn btn-secondary" href="/contact?topic=demo">
-              Book a demo
+              Book a Demo
             </Link>
           </div>
         </div>

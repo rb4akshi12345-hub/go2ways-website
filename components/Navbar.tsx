@@ -57,7 +57,8 @@ export default function Navbar() {
   };
 
   const isServicesActive = pathname.startsWith("/services");
-  const isCompanyActive = pathname === "/industries";
+  const isIndustriesActive = pathname === "/industries";
+  const isCompanyActive = pathname === "/company";
   const isHomeActive = pathname === "/";
 
   return (
@@ -80,18 +81,26 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link href="/services#how-we-work">Consulting</Link>
-            </li>
-            <li>
-              <Link href="/contact#faq">Support</Link>
+              <Link
+                href="/industries"
+                aria-current={isIndustriesActive ? "page" : undefined}
+              >
+                Industries
+              </Link>
             </li>
             <li>
               <Link
-                href="/industries"
+                href="/company"
                 aria-current={isCompanyActive ? "page" : undefined}
               >
                 Company
               </Link>
+            </li>
+            <li>
+              <Link href="/services#how-we-work">Consulting</Link>
+            </li>
+            <li>
+              <Link href="/contact#faq">Support</Link>
             </li>
 
             {/* Services Dropdown */}

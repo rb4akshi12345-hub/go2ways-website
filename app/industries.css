@@ -1,0 +1,302 @@
+/* ==========================================================================
+   INDUSTRIES PAGE STYLES — OPTION 3: ARCHITECTURAL CARDS WITH COLOR REVEAL
+   ========================================================================== */
+
+.arch-clients-section {
+  margin-top: 48px;
+  margin-bottom: 72px;
+}
+
+.industry-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #316f9c;
+  margin-bottom: 8px;
+}
+
+/* --- Architectural 8-Card Grid --- */
+.arch-client-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin: 36px 0 24px;
+}
+
+.arch-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px 16px 16px;
+  height: 135px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(16, 38, 76, 0.04);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease;
+  cursor: default;
+  position: relative;
+}
+
+.arch-card:hover {
+  transform: translateY(-4px);
+  border-color: #316f9c;
+  box-shadow: 0 14px 28px -6px rgba(16, 38, 76, 0.1);
+}
+
+.arch-card-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Logo Cross-fade (Mono to Color on Hover) --- */
+.arch-logo-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-default {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  transition: opacity 0.25s ease;
+  opacity: 1;
+}
+
+.logo-hover {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  transition: opacity 0.25s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.arch-card:hover .logo-default {
+  opacity: 0;
+}
+
+.arch-card:hover .logo-hover {
+  opacity: 1;
+}
+
+/* Typography & Visual Details */
+.arch-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.arch-name {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.arch-sub {
+  display: block;
+  font-size: 10px;
+  color: #64748b;
+  font-weight: 500;
+  margin-top: 3px;
+  letter-spacing: 0.02em;
+}
+
+.arch-logo-mono {
+  color: #334155;
+}
+
+.arch-logo-color {
+  color: #10264c;
+}
+
+/* Individual Brand Marks */
+.asahi-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+}
+
+.asahi-mono {
+  background: #334155;
+  color: #ffffff;
+}
+
+.asahi-color {
+  background: #1d3a9e;
+  color: #ffffff;
+}
+
+.mhi-diamond {
+  font-size: 11px;
+  margin-right: 4px;
+  color: #475569;
+}
+
+.diamond-red {
+  color: #e60012;
+}
+
+.text-sec {
+  color: #1a3f80;
+}
+
+.text-briwo {
+  color: #1f66cc;
+}
+
+.text-navy {
+  color: #0a2540;
+}
+
+.text-ibm {
+  color: #1a3a8a;
+}
+
+.text-dark {
+  color: #111827;
+}
+
+.font-black {
+  font-weight: 800;
+}
+
+.font-heavy {
+  font-weight: 700;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.tracking-tight {
+  letter-spacing: -0.04em;
+}
+
+.tracking-wide {
+  letter-spacing: 0.08em;
+}
+
+.tracking-widest {
+  letter-spacing: 0.25em;
+}
+
+.text-2xl {
+  font-size: 26px;
+}
+
+.text-xl {
+  font-size: 20px;
+}
+
+.text-lg {
+  font-size: 18px;
+}
+
+.text-sm {
+  font-size: 13.5px;
+}
+
+.quantum-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.q-badge {
+  font-weight: 800;
+  font-size: 22px;
+  color: #475569;
+}
+
+.q-green {
+  color: #5cb848;
+}
+
+/* Industry Domain Tag */
+.arch-industry-tag {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #94a3b8;
+  margin-top: 10px;
+  letter-spacing: 0.02em;
+  transition: color 0.2s ease;
+}
+
+.arch-card:hover .arch-industry-tag {
+  color: #316f9c;
+}
+
+/* --- Trust Footer Indicator --- */
+.arch-showcase-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.arch-trust-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: #64748b;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 8px 18px;
+  border-radius: 9999px;
+}
+
+.indicator-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #92b53e;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+  .arch-client-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+}
+
+@media (max-width: 580px) {
+  .arch-client-grid {
+    grid-template-columns: 1fr;
+  }
+  .arch-card {
+    height: 125px;
+  }
+}

@@ -102,12 +102,64 @@ export default function ContactPage() {
       <section className="container">
         <div className="contact-grid">
           <div className="contact-intro reveal in-view">
-            <p>
-              Give us a call or drop by anytime, we endeavour to answer all
-              enquiries within 24 hours on business days. We will be happy to
-              answer your questions.
+            <h2 className="contact-headline">
+              Let&apos;s Architect Your Next Operational Milestone
+            </h2>
+            <p className="contact-description">
+              Whether you are planning a zero-downtime IBM Maximo / MAS 8/9 migration, scoping TRIRIGA facility workflows, or seeking 24/7 SLA-governed managed services, our enterprise team is ready to assist.
             </p>
-            <span className="grad-rule" aria-hidden="true" />
+
+            <div className="contact-value-props">
+              <div className="value-prop-item">
+                <div className="prop-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    <path d="m9 12 2 2 4-4" />
+                  </svg>
+                </div>
+                <div className="prop-text">
+                  <strong>Direct Architect Assignment</strong>
+                  <p>Your scope is triaged directly by certified IBM Maximo &amp; MAS practice specialists, never lost in junior queues.</p>
+                </div>
+              </div>
+
+              <div className="value-prop-item">
+                <div className="prop-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                </div>
+                <div className="prop-text">
+                  <strong>Under-24h Response SLA</strong>
+                  <p>Guaranteed response within 24 business hours with initial architectural assessment and available consultation slots.</p>
+                </div>
+              </div>
+
+              <div className="value-prop-item">
+                <div className="prop-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                  </svg>
+                </div>
+                <div className="prop-text">
+                  <strong>Mutual NDA &amp; Enterprise Confidentiality</strong>
+                  <p>All shared architecture diagrams, system topologies, and asset data are governed under strict enterprise confidentiality.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="direct-channels-card">
+              <div className="channel-item">
+                <span className="channel-lbl">Priority Inquiries</span>
+                <a href="mailto:support@go2ways.com" className="channel-val">support@go2ways.com</a>
+              </div>
+              <div className="channel-item">
+                <span className="channel-lbl">Direct Desk</span>
+                <a href="tel:+918826949739" className="channel-val">+91 8826949739</a>
+              </div>
+            </div>
           </div>
 
           <Suspense fallback={<div>Loading form...</div>}>
@@ -150,11 +202,11 @@ export default function ContactPage() {
             migrations, and TRIRIGA.
           </p>
           <div className="cta-actions">
-            <Link className="btn btn-primary" href="/contact?topic=trial">
-              Start free trial
+            <Link className="btn btn-primary" href="/services">
+              Explore Our Services
             </Link>
-            <Link className="btn btn-secondary" href="/contact?topic=demo">
-              Book a demo
+            <Link className="btn btn-secondary" href="/company">
+              About go2ways
             </Link>
           </div>
         </div>

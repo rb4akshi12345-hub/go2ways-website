@@ -9,3 +9,4 @@ dist/
 server/.env
 server/data/
 .DS_Store
+*.tsbuildinfo

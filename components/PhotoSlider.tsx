@@ -16,17 +16,15 @@ interface PhotoSliderProps {
 
 /**
  * Auto-sliding photo gallery. The progress bar on the current dot times each
- * slide; it pauses on hover or focus, when scrolled out of view and when the tab
- * is hidden. Swipe on touch screens. Still for people who prefer reduced motion.
+ * slide. It keeps going on hover and only pauses when scrolled out of view or
+ * when the tab is hidden. Swipe on touch screens. Still for people who prefer reduced motion.
  */
-export default function PhotoSlider({ photos, label, interval = 4500 }: PhotoSliderProps) {
+export default function PhotoSlider({ photos, label, interval = 3500 }: PhotoSliderProps) {
   const n = photos.length;
   const boxRef = useRef<HTMLDivElement>(null);
   // index can equal n: that is the copy of the first photo, used for a seamless loop
   const [index, setIndex] = useState(0);
   const [animate, setAnimate] = useState(true);
-  const [hovered, setHovered] = useState(false);
-  const [focused, setFocused] = useState(false);
   const [visible, setVisible] = useState(false);
   const [tabHidden, setTabHidden] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
@@ -79,7 +77,7 @@ export default function PhotoSlider({ photos, label, interval = 4500 }: PhotoSli
 
   if (n === 0) return null;
   const real = index % n;
-  const paused = hovered || focused || !visible || tabHidden;
+  const paused = !visible || tabHidden;
   const slides = [...photos, photos[0]];
 
   return (
@@ -92,12 +90,6 @@ export default function PhotoSlider({ photos, label, interval = 4500 }: PhotoSli
       aria-roledescription="carousel"
       aria-label={label}
       style={{ "--slide-ms": `${interval}ms` } as React.CSSProperties}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onFocus={() => setFocused(true)}
-      onBlur={(e) => {
-        if (!e.currentTarget.contains(e.relatedTarget as Node)) setFocused(false);
-      }}
       onPointerDown={(e) => {
         startX.current = e.clientX;
       }}

@@ -1,0 +1,72 @@
+ibm-maximo	g1	photo-1621905251918-48416bd8575a	Engineer in a hard hat reviewing plans on site
+ibm-maximo	g2	photo-1581092334651-ddf26d9a09d0	Technician working on industrial equipment
+ibm-maximo	g3	photo-1553413077-190dd305871c	Warehouse with stocked shelves
+ibm-maximo	c1	photo-1598299803204-b73796f43289	Operator running industrial machinery
+ibm-maximo	c2	photo-1593642634315-48f5414c3ad9	Person working on a laptop
+ibm-maximo	c3	photo-1461749280684-dccba630e2f6	Code on a monitor
+ibm-maximo	c4	photo-1532622785990-d2c36a76f5a6	Two people mapping a workflow on a whiteboard
+ibm-maximo	c5	photo-1460925895917-afdab827c52f	Reports and charts on a laptop
+ibm-maximo	c6	photo-1558494949-ef010cbdcc31	Network cabling in a data center
+mas-migration	g1	photo-1784652852605-6945598f2af3	Modern data center with rows of server cabinets
+mas-migration	g2	photo-1667984390538-3dea7a3fe33d	Cloud computing concept
+mas-migration	g3	photo-1522071820081-009f0129c71c	Team planning around laptops
+mas-migration	c1	photo-1768055105012-4c53791b2877	Checking items off a list
+mas-migration	c2	photo-1435527173128-983b87201f4d	Open planner on a desk
+mas-migration	c3	photo-1695668548342-c0c1ad479aee	Rack of servers
+mas-migration	c4	photo-1555066931-4365d14bab8c	Code on a laptop screen
+mas-migration	c5	photo-1544197150-b99a580bb7a8	Network cables
+mas-migration	c6	photo-1584169417032-d34e8d805e8b	Server room aisle
+enterprise-integration	g1	photo-1644325349124-d1756b79dd42	Abstract network of connected points
+enterprise-integration	g2	photo-1586528116311-ad8dd3c8310d	Logistics warehouse with stacked crates
+enterprise-integration	g3	photo-1622675363311-3e1904dc1885	Team working together on laptops
+enterprise-integration	c1	photo-1772588627327-1eeddcf73c11	Reviewing purchasing documents with a calculator and laptop
+enterprise-integration	c2	photo-1607706189992-eae578626c86	Code on a computer screen
+enterprise-integration	c3	photo-1594915440248-1e419eba6611	Fibre optic cables in a network switch
+enterprise-integration	c4	photo-1686061593213-98dad7c599b9	Data on a computer screen
+enterprise-integration	c5	photo-1614064641938-3bbee52942c7	Padlock on a keyboard
+enterprise-integration	c6	photo-1768121230734-b184c8f91187	Aerial view of a city's streets at night
+cloud-infrastructure	g1	photo-1762163516269-3c143e04175c	Server rack with status lights
+cloud-infrastructure	g2	photo-1580106815433-a5b1d1d53d85	Data center corridor with glass doors
+cloud-infrastructure	g3	photo-1698668975271-2ba9a323be6b	Cabled server rack
+cloud-infrastructure	c1	photo-1690627931320-16ac56eb2588	Cloud icon with floating data charts
+cloud-infrastructure	c2	photo-1605732562742-3023a888e56e	Stacked shipping containers
+cloud-infrastructure	c3	photo-1531492746076-161ca9bcad58	Internal hard drive
+cloud-infrastructure	c4	photo-1663841366340-c0fee65c6a11	Wall of monitoring screens
+cloud-infrastructure	c5	photo-1682559736721-c2e77ff4c650	Cables connected to a server
+cloud-infrastructure	c6	photo-1550751827-4bd374c3f58b	Glowing security panel
+managed-support	g1	photo-1553775282-20af80779df7	Support headset beside a laptop
+managed-support	g2	photo-1748256622734-92241ae7b43f	Support team working at computers
+managed-support	g3	photo-1580795479225-c50ab8c3348d	Engineer working at an operations desk
+managed-support	c1	photo-1618414074972-723c8314d3db	Support engineer wearing a headset
+managed-support	c2	photo-1582138825658-fb952c08b282	Developer working on a laptop
+managed-support	c3	photo-1545665277-5937489579f2	Monitor and laptop showing live data
+managed-support	c4	photo-1621905251189-08b45d6a269e	Technician fixing wiring
+managed-support	c5	photo-1517026575980-3e1e2dedeab4	Performance gauge
+managed-support	c6	photo-1588872657578-7efd1f1555ed	Laptop installing an update
+tririga	g1	photo-1758448500688-3ababa93fd67	Modern office lobby with a reception desk
+tririga	g2	photo-1781919293919-693ee10fb06c	Modern office building
+tririga	g3	photo-1608303588026-884930af2559	People reviewing architectural plans
+tririga	c1	photo-1631193816258-28b44b21e78b	Open-plan office with rows of desks
+tririga	c2	photo-1763729805496-b5dbf7f00c79	Signing a lease document
+tririga	c3	photo-1785682118449-21da8825754d	Worker installing ceiling components
+tririga	c4	photo-1587582423116-ec07293f0395	Construction worker on a building frame
+tririga	c5	photo-1765371514743-45bd8e6c0a28	Glass-walled meeting rooms
+tririga	c6	photo-1760042560176-beedb1ce18cc	Spiral staircase in a glass building
+mobile-development	g1	photo-1620082691363-8283e2f7bf61	Field worker in a safety helmet
+mobile-development	g2	photo-1551650975-87deedd944c3	Phone showing a dashboard app
+mobile-development	g3	photo-1621905253185-95614217f357	Engineer in a hard hat on site
+mobile-development	c1	photo-1634474588578-7f0565a1cea5	Technician recording work on a tablet
+mobile-development	c2	photo-1511707171634-5f897ff02aa9	Phone app beside a laptop
+mobile-development	c3	photo-1621905252507-b35492cc74b4	Field engineer on site
+mobile-development	c4	photo-1762341104168-63ddb56e9805	Filling in an inspection checklist
+mobile-development	c5	photo-1604357209793-fca5dca89f97	Phone showing a navigation map
+mobile-development	c6	photo-1595079676601-f1adf5be5dee	Phone scanning a code
+consulting-advisory	g1	photo-1517245386807-bb43f82c33c4	Strategy meeting around a laptop
+consulting-advisory	g2	photo-1557804506-669a67965ba0	Consultant presenting to a team
+consulting-advisory	g3	photo-1586936893354-362ad6ae47ba	Team planning with sticky notes
+consulting-advisory	c1	photo-1590402494587-44b71d7772f6	Two people building a project roadmap
+consulting-advisory	c2	photo-1762146828422-50a8bd416d3c	Architectural blueprints
+consulting-advisory	c3	photo-1711097383282-28097ae16b1d	Reviewing a report over a laptop
+consulting-advisory	c4	photo-1769738360873-3ba6cac0b308	Mapping a process flowchart on a whiteboard
+consulting-advisory	c5	photo-1564846824194-346b7871b855	Reviewing licence paperwork
+consulting-advisory	c6	photo-1612831455359-970e23a1e4e9	Remote team member on a video call

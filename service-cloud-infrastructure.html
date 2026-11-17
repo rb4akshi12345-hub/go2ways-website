@@ -88,17 +88,26 @@
             <li>24/7 monitoring and alerting</li>
           </ul>
         </div>
-        <aside class="glance-card reveal-scale" aria-label="At a glance">
-          <span class="glance-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.7-9h1.8a4.5 4.5 0 1 1 0 9z"/></svg></span>
-          <div>
-            <h3 class="glance-label">Works with</h3>
-            <ul class="chip-list"><li class="chip">AWS</li><li class="chip">Microsoft Azure</li><li class="chip">Red Hat OpenShift</li><li class="chip">VMware</li><li class="chip">Linux</li><li class="chip">Windows Server</li><li class="chip">Terraform</li><li class="chip">Prometheus / Grafana</li></ul>
+        <div class="svc-gallery reveal-scale" data-slider aria-roledescription="carousel" aria-label="Cloud &amp; Infrastructure in practice">
+          <div class="slides-viewport">
+            <div class="slides">
+              <figure class="slide"><img src="assets/img/services/cloud-infrastructure/g1.jpg" alt="Server rack with status lights" width="1200" height="900"></figure>
+              <figure class="slide"><img src="assets/img/services/cloud-infrastructure/g2.jpg" alt="Data center corridor with glass doors" width="1200" height="900" loading="lazy"></figure>
+              <figure class="slide"><img src="assets/img/services/cloud-infrastructure/g3.jpg" alt="Cabled server rack" width="1200" height="900" loading="lazy"></figure>
+            </div>
           </div>
-          <div>
-            <h3 class="glance-label">Typical engagements</h3>
-            <ul class="engage-list"><li>Cloud migration</li><li>Managed infrastructure</li><li>Backup &amp; DR setup</li></ul>
-          </div>
-        </aside>
+          <div class="slider-dots" aria-label="Choose a photo"></div>
+        </div>
+      </div>
+      <div class="svc-details reveal">
+        <div>
+          <h3 class="details-label">Works with</h3>
+          <ul class="chip-list"><li class="chip">AWS</li><li class="chip">Microsoft Azure</li><li class="chip">Red Hat OpenShift</li><li class="chip">VMware</li><li class="chip">Linux</li><li class="chip">Windows Server</li><li class="chip">Terraform</li><li class="chip">Prometheus / Grafana</li></ul>
+        </div>
+        <div>
+          <h3 class="details-label">Typical engagements</h3>
+          <ul class="engage-list"><li>Cloud migration</li><li>Managed infrastructure</li><li>Backup &amp; DR setup</li></ul>
+        </div>
       </div>
     </section>
 
@@ -108,35 +117,47 @@
         <h2 class="heading-l reveal" style="--stagger:1">Everything you need,<br>from one team</h2>
       </div>
       <div class="card-grid" data-stagger-children>
-        <article class="step-card cap-card reveal">
-          <span class="cap-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.7-9h1.8a4.5 4.5 0 1 1 0 9z"/></svg></span>
-          <h3 class="heading-s">AWS &amp; Azure deployment</h3>
-          <p class="body-m">Landing zones, networking and environments designed for security and cost.</p>
+        <article class="cap-card reveal">
+          <div class="cap-photo"><img src="assets/img/services/cloud-infrastructure/c1.jpg" alt="Cloud icon with floating data charts" width="800" height="520" loading="lazy"></div>
+          <div class="cap-text">
+            <h3 class="heading-s">AWS &amp; Azure deployment</h3>
+            <p class="body-m">Landing zones, networking and environments designed for security and cost.</p>
+          </div>
         </article>
-        <article class="step-card cap-card reveal">
-          <span class="cap-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 10 5-10 5L2 7z"/><path d="m2 12 10 5 10-5M2 17l10 5 10-5"/></svg></span>
-          <h3 class="heading-s">OpenShift &amp; containers</h3>
-          <p class="body-m">Red Hat OpenShift clusters sized and configured for MAS and other workloads.</p>
+        <article class="cap-card reveal">
+          <div class="cap-photo"><img src="assets/img/services/cloud-infrastructure/c2.jpg" alt="Stacked shipping containers" width="800" height="520" loading="lazy"></div>
+          <div class="cap-text">
+            <h3 class="heading-s">OpenShift &amp; containers</h3>
+            <p class="body-m">Red Hat OpenShift clusters sized and configured for MAS and other workloads.</p>
+          </div>
         </article>
-        <article class="step-card cap-card reveal">
-          <span class="cap-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span>
-          <h3 class="heading-s">Backup &amp; disaster recovery</h3>
-          <p class="body-m">Automated backups, restore testing and documented recovery targets.</p>
+        <article class="cap-card reveal">
+          <div class="cap-photo"><img src="assets/img/services/cloud-infrastructure/c3.jpg" alt="Internal hard drive" width="800" height="520" loading="lazy"></div>
+          <div class="cap-text">
+            <h3 class="heading-s">Backup &amp; disaster recovery</h3>
+            <p class="body-m">Automated backups, restore testing and documented recovery targets.</p>
+          </div>
         </article>
-        <article class="step-card cap-card reveal">
-          <span class="cap-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></span>
-          <h3 class="heading-s">Monitoring &amp; alerting</h3>
-          <p class="body-m">Health, performance and capacity tracked, with alerts routed to the right people.</p>
+        <article class="cap-card reveal">
+          <div class="cap-photo"><img src="assets/img/services/cloud-infrastructure/c4.jpg" alt="Wall of monitoring screens" width="800" height="520" loading="lazy"></div>
+          <div class="cap-text">
+            <h3 class="heading-s">Monitoring &amp; alerting</h3>
+            <p class="body-m">Health, performance and capacity tracked, with alerts routed to the right people.</p>
+          </div>
         </article>
-        <article class="step-card cap-card reveal">
-          <span class="cap-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01"/></svg></span>
-          <h3 class="heading-s">Virtualisation &amp; servers</h3>
-          <p class="body-m">VMware and on-premises servers administered, patched and right-sized.</p>
+        <article class="cap-card reveal">
+          <div class="cap-photo"><img src="assets/img/services/cloud-infrastructure/c5.jpg" alt="Cables connected to a server" width="800" height="520" loading="lazy"></div>
+          <div class="cap-text">
+            <h3 class="heading-s">Virtualisation &amp; servers</h3>
+            <p class="body-m">VMware and on-premises servers administered, patched and right-sized.</p>
+          </div>
         </article>
-        <article class="step-card cap-card reveal">
-          <span class="cap-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>
-          <h3 class="heading-s">Security &amp; compliance</h3>
-          <p class="body-m">Patching, access control, network hardening and audit-ready configuration.</p>
+        <article class="cap-card reveal">
+          <div class="cap-photo"><img src="assets/img/services/cloud-infrastructure/c6.jpg" alt="Glowing security panel" width="800" height="520" loading="lazy"></div>
+          <div class="cap-text">
+            <h3 class="heading-s">Security &amp; compliance</h3>
+            <p class="body-m">Patching, access control, network hardening and audit-ready configuration.</p>
+          </div>
         </article>
       </div>
     </section>

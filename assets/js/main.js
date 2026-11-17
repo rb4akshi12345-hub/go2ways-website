@@ -122,6 +122,82 @@
   });
   if (toggle) toggle.addEventListener("click", function () { if (!root.classList.contains("nav-open")) closeMenus(); });
 
+  /* ---------- Photo sliders (service pages) ---------- */
+  document.querySelectorAll("[data-slider]").forEach(function (box) {
+    var track = box.querySelector(".slides");
+    var slides = Array.prototype.slice.call(track.children);
+    var n = slides.length;
+    if (n < 2) return;
+    var dotsBox = box.querySelector(".slider-dots");
+    box.style.setProperty("--slide-ms", "4500ms");
+
+    // A copy of the first photo at the end makes the loop seamless.
+    var clone = slides[0].cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    var cloneImg = clone.querySelector("img");
+    if (cloneImg) { cloneImg.alt = ""; cloneImg.removeAttribute("loading"); }
+    track.appendChild(clone);
+
+    slides.forEach(function (s, k) {
+      s.setAttribute("role", "group");
+      s.setAttribute("aria-roledescription", "slide");
+      s.setAttribute("aria-label", (k + 1) + " of " + n);
+    });
+    var dots = slides.map(function (s, k) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("aria-label", "Show photo " + (k + 1) + " of " + n);
+      b.addEventListener("click", function () { go(k); });
+      dotsBox.appendChild(b);
+      return b;
+    });
+
+    var i = 0, hovered = false, focused = false, visible = !("IntersectionObserver" in window);
+    function render(animate) {
+      track.classList.toggle("no-anim", !animate);
+      track.style.transform = "translateX(" + (-i * 100) + "%)";
+      var real = i % n;
+      slides.forEach(function (s, k) { s.classList.toggle("is-active", k === real && i < n); });
+      clone.classList.toggle("is-active", i === n);
+      dots.forEach(function (d, k) { if (k === real) d.setAttribute("aria-current", "true"); else d.removeAttribute("aria-current"); });
+    }
+    function restartProgress() {
+      var d = dots[i % n];
+      d.removeAttribute("aria-current"); void d.offsetWidth; d.setAttribute("aria-current", "true");
+    }
+    function go(k) { i = k; render(true); restartProgress(); }
+    function next() {
+      i += 1;
+      render(true);
+      if (i === n) setTimeout(function () { i = 0; render(false); }, 950); // jump back from the copy, unseen
+    }
+    function prev() { go(i === 0 ? n - 1 : (i % n) - 1); }
+    function updatePause() { box.classList.toggle("paused", hovered || focused || !visible || document.hidden); }
+
+    if (reduceMotion) box.classList.add("static");
+    // The progress bar on the current dot times each slide; when it fills, move on.
+    dotsBox.addEventListener("animationend", function (e) { if (e.animationName === "slide-progress" && !reduceMotion) next(); });
+    box.addEventListener("mouseenter", function () { hovered = true; updatePause(); });
+    box.addEventListener("mouseleave", function () { hovered = false; updatePause(); });
+    box.addEventListener("focusin", function () { focused = true; updatePause(); });
+    box.addEventListener("focusout", function () { focused = false; updatePause(); });
+    document.addEventListener("visibilitychange", updatePause);
+    if (!visible) {
+      new IntersectionObserver(function (entries) { visible = entries[0].isIntersecting; updatePause(); }, { threshold: 0.3 }).observe(box);
+    }
+    // Swipe on touch screens.
+    var startX = null;
+    box.addEventListener("pointerdown", function (e) { startX = e.clientX; });
+    box.addEventListener("pointerup", function (e) {
+      if (startX === null) return;
+      var dx = e.clientX - startX; startX = null;
+      if (Math.abs(dx) > 40) { if (dx < 0) go((i + 1) % n); else prev(); }
+    });
+
+    render(false);
+    updatePause();
+  });
+
   /* ---------- Clone shared dashboard mockups ---------- */
   document.querySelectorAll("[data-mock]").forEach(function (slot) {
     var tpl = document.getElementById("mock-" + slot.getAttribute("data-mock"));

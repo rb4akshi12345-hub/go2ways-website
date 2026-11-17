@@ -663,6 +663,91 @@ a.menu-item:hover, a.menu-item:focus-visible { background: var(--surface-subtle)
   .dash-bottom { grid-template-columns: 1fr; }
 }
 
+/* ---------- Service pages ---------- */
+@media (min-width: 901px) {
+  /* taller copy than other heroes, so anchor the wave to the bottom instead */
+  .svc-hero { padding-top: 180px; min-height: 0; padding-bottom: clamp(340px, 34vw, 500px); }
+  .svc-hero .silk-wave { top: auto; bottom: 0; }
+}
+/* keep the wave inside the hero so it never drifts over the next section */
+.svc-hero { overflow: clip; }
+.svc-hero .silk-wave { bottom: 0; }
+@media (max-width: 900px) { .svc-hero { padding-bottom: 360px; } }
+.crumb { gap: 8px; }
+.crumb .ico { width: 18px; height: 18px; color: var(--pill-border); }
+.hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.svc-hero .hero-copy .body-l { max-width: 680px; }
+
+/* Overview gallery: three photos that slide on their own */
+.svc-gallery { position: relative; }
+.slides-viewport { position: relative; overflow: hidden; border-radius: var(--radius-panel); aspect-ratio: 4 / 3; background: var(--surface-media); }
+.slides { display: flex; height: 100%; transition: transform 0.9s var(--ease-out); will-change: transform; }
+.slides.no-anim { transition: none; }
+.slide { flex: 0 0 100%; height: 100%; margin: 0; overflow: hidden; }
+.slide img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.06); transition: transform 6s ease-out; }
+.slide.is-active img { transform: scale(1); }
+.slider-dots { display: flex; justify-content: center; gap: 8px; margin-top: 16px; }
+.slider-dots button {
+  position: relative; width: 28px; height: 6px; padding: 0; border: 0; border-radius: 999px; cursor: pointer;
+  background: var(--border-strong); overflow: hidden; transition: width 0.4s var(--ease-out);
+}
+.slider-dots button[aria-current="true"] { width: 48px; }
+.slider-dots button::after {
+  /* progress until the next slide */
+  content: ""; position: absolute; inset: 0; background: var(--action-primary); transform: scaleX(0); transform-origin: left;
+}
+.slider-dots button[aria-current="true"]::after { animation: slide-progress var(--slide-ms, 4500ms) linear forwards; }
+.svc-gallery.paused .slider-dots button[aria-current="true"]::after { animation-play-state: paused; }
+.svc-gallery.static .slider-dots button[aria-current="true"]::after { animation: none; transform: scaleX(1); }
+@keyframes slide-progress { to { transform: scaleX(1); } }
+.slider-dots button:focus-visible { outline: 2px solid var(--pill-border); outline-offset: 3px; }
+
+/* Works with / Typical engagements: two columns lined up with the overview */
+.svc-details {
+  display: grid; grid-template-columns: 600fr 568fr; gap: 72px; margin-top: clamp(40px, 5vw, 64px);
+  padding-top: 32px; border-top: 1px solid var(--border-subtle);
+}
+@media (max-width: 960px) { .svc-details { grid-template-columns: 1fr; gap: 32px; } }
+.details-label { font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 14px; }
+.chip-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { padding: 8px 15px; border-radius: 999px; background: var(--surface-subtle); border: 1px solid var(--border-subtle); font-size: 14px; line-height: 1.3; }
+.engage-list { display: grid; }
+.engage-list li { display: flex; align-items: center; gap: 12px; padding: 13px 0; border-top: 1px solid var(--border-subtle); font-size: 16px; }
+.engage-list li:last-child { border-bottom: 1px solid var(--border-subtle); }
+.engage-list li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; background: linear-gradient(135deg, #1a6fb8, #6c3cc9); }
+
+/* What we deliver: photo cards */
+.cap-card { display: flex; flex-direction: column; gap: 18px; }
+.cap-photo {
+  position: relative; overflow: hidden; border-radius: var(--radius-card); aspect-ratio: 16 / 10;
+  background: var(--surface-media); transition: transform 0.6s var(--ease-out), box-shadow 0.6s var(--ease-out);
+}
+.cap-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.2s var(--ease-out); }
+.cap-text { display: flex; flex-direction: column; gap: 8px; padding-inline: 6px; }
+.cap-text .body-m { color: var(--text-slate); }
+@media (hover: hover) {
+  .cap-card:hover .cap-photo { transform: translateY(-4px); box-shadow: 0 24px 40px -28px rgba(16, 38, 76, 0.4); }
+  .cap-card:hover .cap-photo img { transform: scale(1.05); }
+}
+
+.card-grid.cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.card-grid.cols-4 .step-card { min-height: 250px; }
+@media (max-width: 1000px) { .card-grid.cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .card-grid.cols-4 { grid-template-columns: 1fr; } .card-grid.cols-4 .step-card { min-height: 0; } .card-grid.cols-4 .step-num { margin-bottom: 28px; } }
+
+.related-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 900px) { .related-grid { grid-template-columns: 1fr; } }
+.related-card {
+  display: flex; gap: 14px; align-items: center; padding: 20px; border-radius: var(--radius-card);
+  background: var(--surface-subtle); border: 1px solid var(--border-subtle);
+  transition: transform 0.45s var(--ease-out), background-color 0.3s;
+}
+.related-card .arrow { margin-left: auto; font-size: 18px; color: var(--text-muted); transition: transform 0.35s var(--ease-out), color 0.3s; }
+@media (hover: hover) {
+  .related-card:hover { transform: translateY(-4px); background: var(--surface-card); }
+  .related-card:hover .arrow { transform: translateX(4px); color: var(--text-primary); }
+}
+
 /* ---------- Industries ---------- */
 .stat-row {
   position: relative; z-index: 2; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;

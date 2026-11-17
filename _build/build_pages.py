@@ -386,16 +386,33 @@ HEAD = '''<!doctype html>
 
 
 # ---------------------------------------------------------------- service page
+PHOTOS = {}  # (slug, slot) -> alt text; files live in assets/img/services/<slug>/<slot>.jpg
+for _line in (ROOT / "_build" / "service-photos.tsv").read_text().splitlines():
+    if _line.strip():
+        _slug, _slot, _id, _alt = _line.split("\t")
+        PHOTOS[(_slug, _slot)] = _alt
+
+
+def photo(slug, slot, w, h, lazy=True):
+    alt = html.escape(PHOTOS[(slug, slot)])
+    return (f'<img src="assets/img/services/{slug}/{slot}.jpg" alt="{alt}" width="{w}" height="{h}"'
+            + (' loading="lazy"' if lazy else "") + ">")
+
+
 def service_page(s):
     hl = "\n".join(f"            <li>{h}</li>" for h in s["highlights"])
     chips = "".join(f'<li class="chip">{html.escape(w)}</li>' for w in s["works"])
     engage = "".join(f"<li>{html.escape(e)}</li>" for e in s["engage"])
     caps = "\n".join(
-        f'''        <article class="step-card cap-card reveal">
-          <span class="cap-icon">{icon(ic)}</span>
-          <h3 class="heading-s">{html.escape(t)}</h3>
-          <p class="body-m">{html.escape(d)}</p>
-        </article>''' for ic, t, d in s["caps"])
+        f'''        <article class="cap-card reveal">
+          <div class="cap-photo">{photo(s["slug"], f"c{i + 1}", 800, 520)}</div>
+          <div class="cap-text">
+            <h3 class="heading-s">{html.escape(t)}</h3>
+            <p class="body-m">{html.escape(d)}</p>
+          </div>
+        </article>''' for i, (ic, t, d) in enumerate(s["caps"]))
+    slides = "\n".join(
+        f'''              <figure class="slide">{photo(s["slug"], f"g{i}", 1200, 900, lazy=i > 1)}</figure>''' for i in (1, 2, 3))
     steps = "\n".join(
         f'''        <article class="step-card reveal">
           <span class="step-num">{i + 1:02d}</span>
@@ -438,17 +455,24 @@ def service_page(s):
 {hl}
           </ul>
         </div>
-        <aside class="glance-card reveal-scale" aria-label="At a glance">
-          <span class="glance-icon">{icon(s["icon"])}</span>
-          <div>
-            <h3 class="glance-label">Works with</h3>
-            <ul class="chip-list">{chips}</ul>
+        <div class="svc-gallery reveal-scale" data-slider aria-roledescription="carousel" aria-label="{html.escape(plain_name)} in practice">
+          <div class="slides-viewport">
+            <div class="slides">
+{slides}
+            </div>
           </div>
-          <div>
-            <h3 class="glance-label">Typical engagements</h3>
-            <ul class="engage-list">{engage}</ul>
-          </div>
-        </aside>
+          <div class="slider-dots" aria-label="Choose a photo"></div>
+        </div>
+      </div>
+      <div class="svc-details reveal">
+        <div>
+          <h3 class="details-label">Works with</h3>
+          <ul class="chip-list">{chips}</ul>
+        </div>
+        <div>
+          <h3 class="details-label">Typical engagements</h3>
+          <ul class="engage-list">{engage}</ul>
+        </div>
       </div>
     </section>
 
